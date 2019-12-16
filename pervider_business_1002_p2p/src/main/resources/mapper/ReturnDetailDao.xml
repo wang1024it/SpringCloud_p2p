@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_business_1002_p2p.dao.ReturnDetailDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.borrowing.ReturnDetail" id="ReturnDetailMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="bidAmount" column="bid_amount" jdbcType="OTHER"/>
+        <result property="bidId" column="bid_id" jdbcType="INTEGER"/>
+        <result property="totalAmount" column="total_amount" jdbcType="OTHER"/>
+        <result property="principal" column="principal" jdbcType="OTHER"/>
+        <result property="interest" column="interest" jdbcType="OTHER"/>
+        <result property="monthIndex" column="month_index" jdbcType="INTEGER"/>
+        <result property="deadLine" column="dead_line" jdbcType="TIMESTAMP"/>
+        <result property="payDate" column="pay_date" jdbcType="TIMESTAMP"/>
+        <result property="returnType" column="return_type" jdbcType="INTEGER"/>
+        <result property="refundDetailId" column="refund_detail_id" jdbcType="INTEGER"/>
+        <result property="fromMembersId" column="from_members_id" jdbcType="INTEGER"/>
+        <result property="toMembersId" column="to_members_id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ReturnDetailMap">
+        select
+          id, bid_amount, bid_id, total_amount, principal, interest, month_index, dead_line, pay_date, return_type, refund_detail_id, from_members_id, to_members_id
+        from return_detail
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="ReturnDetailMap">
+        select
+        a.*, b.title
+        from return_detail a,bid_request b
+        <where>
+            and d a.bid_id = b.id
+            <if test="id != null">
+                and id = #{id}
+            </if>   
+            <if test="bidAmount != null">
+                and bid_amount = #{bidAmount}
+            </if>   
+            <if test="bidId != null">
+                and bid_id = #{bidId}
+            </if>   
+            <if test="totalAmount != null">
+                and total_amount = #{totalAmount}
+            </if>   
+            <if test="principal != null">
+                and principal = #{principal}
+            </if>   
+            <if test="interest != null">
+                and interest = #{interest}
+            </if>   
+            <if test="monthIndex != null">
+                and month_index = #{monthIndex}
+            </if>   
+            <if test="deadLine != null">
+                and dead_line = #{deadLine}
+            </if>   
+            <if test="payDate != null">
+                and pay_date = #{payDate}
+            </if>   
+            <if test="returnType != null">
+                and return_type = #{returnType}
+            </if>   
+            <if test="refundDetailId != null">
+                and refund_detail_id = #{refundDetailId}
+            </if>   
+            <if test="fromMembersId != null">
+                and from_members_id = #{fromMembersId}
+            </if>   
+            <if test="toMembersId != null and toMembersId != ''">
+                and to_members_id like concat('%', #{toMembersId}, '%')
+            </if>            
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into return_detail(bid_amount, bid_id, total_amount, principal, interest, month_index, dead_line, pay_date, return_type, refund_detail_id, from_members_id, to_members_id)
+        values (#{bidAmount}, #{bidId}, #{totalAmount}, #{principal}, #{interest}, #{monthIndex}, #{deadLine}, #{payDate}, #{returnType}, #{refundDetailId}, #{fromMembersId}, #{toMembersId})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update return_detail
+        <set>
+            <if test="bidAmount != null">
+                bid_amount = #{bidAmount},
+            </if>
+            <if test="bidId != null">
+                bid_id = #{bidId},
+            </if>
+            <if test="totalAmount != null">
+                total_amount = #{totalAmount},
+            </if>
+            <if test="principal != null">
+                principal = #{principal},
+            </if>
+            <if test="interest != null">
+                interest = #{interest},
+            </if>
+            <if test="monthIndex != null">
+                month_index = #{monthIndex},
+            </if>
+            <if test="deadLine != null">
+                dead_line = #{deadLine},
+            </if>
+            <if test="payDate != null">
+                pay_date = #{payDate},
+            </if>
+            <if test="returnType != null">
+                return_type = #{returnType},
+            </if>
+            <if test="refundDetailId != null">
+                refund_detail_id = #{refundDetailId},
+            </if>
+            <if test="fromMembersId != null">
+                from_members_id = #{fromMembersId},
+            </if>
+            <if test="toMembersId != null and toMembersId != ''">
+                to_members_id = #{toMembersId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from return_detail where id = #{id}
+    </delete>
+    
+</mapper>

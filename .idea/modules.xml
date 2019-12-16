@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/common_p2p/common_p2p.iml" filepath="$PROJECT_DIR$/common_p2p/common_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config_server_p2p/config_server_p2p.iml" filepath="$PROJECT_DIR$/config_server_p2p/config_server_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka_server_p2p/eureka_server_p2p.iml" filepath="$PROJECT_DIR$/eureka_server_p2p/eureka_server_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pervider_assets_1003_p2p/pervider_assets_1003_p2p.iml" filepath="$PROJECT_DIR$/pervider_assets_1003_p2p/pervider_assets_1003_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pervider_business_1002_p2p/pervider_business_1002_p2p.iml" filepath="$PROJECT_DIR$/pervider_business_1002_p2p/pervider_business_1002_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pervider_material_1005_p2p/pervider_material_1005_p2p.iml" filepath="$PROJECT_DIR$/pervider_material_1005_p2p/pervider_material_1005_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pervider_other_1007_p2p/pervider_other_1007_p2p.iml" filepath="$PROJECT_DIR$/pervider_other_1007_p2p/pervider_other_1007_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pervider_shiro_1006_p2p/pervider_shiro_1006_p2p.iml" filepath="$PROJECT_DIR$/pervider_shiro_1006_p2p/pervider_shiro_1006_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pervider_sys_1004_p2p/pervider_sys_1004_p2p.iml" filepath="$PROJECT_DIR$/pervider_sys_1004_p2p/pervider_sys_1004_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pervider_user_1001_p2p/pervider_user_1001_p2p.iml" filepath="$PROJECT_DIR$/pervider_user_1001_p2p/pervider_user_1001_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud_P2P.iml" filepath="$PROJECT_DIR$/springcloud_P2P.iml" />
+      <module fileurl="file://$PROJECT_DIR$/turbine_91_p2p/turbine_91_p2p.iml" filepath="$PROJECT_DIR$/turbine_91_p2p/turbine_91_p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zuul_3001_p2p/zuul_3001_p2p.iml" filepath="$PROJECT_DIR$/zuul_3001_p2p/zuul_3001_p2p.iml" />
+    </modules>
+  </component>
+</project>

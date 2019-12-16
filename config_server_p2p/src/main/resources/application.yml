@@ -1,0 +1,12 @@
+server:
+  port: 4001
+
+spring:
+  application:
+    name:  config_server_p2p
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wang1024it/online-loan-config.git
+          search-paths: aaa,bbb

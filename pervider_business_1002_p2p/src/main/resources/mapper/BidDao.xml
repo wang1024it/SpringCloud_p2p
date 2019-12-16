@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_business_1002_p2p.dao.BidDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.borrowing.Bid" id="BidMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="actualRate" column="actual_rate" jdbcType="OTHER"/>
+        <result property="availableAmount" column="available_amount" jdbcType="OTHER"/>
+        <result property="bidRequestId" column="bid_request_id" jdbcType="INTEGER"/>
+        <result property="membersId" column="members_id" jdbcType="INTEGER"/>
+        <result property="bidTime" column="bid_time" jdbcType="TIMESTAMP"/>
+        <result property="membersName" column="members_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BidMap">
+        select
+          id, actual_rate, available_amount, bid_request_id, members_id, bid_time
+        from bid
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="BidMap">
+        select
+        a.*, b.`name` as members_name
+        from bid a, members b
+        <where>
+             a.members_id = b.id
+            <if test="id != null">
+                and a.id = #{id}
+            </if>   
+            <if test="actualRate != null">
+                and a.actual_rate = #{actualRate}
+            </if>   
+            <if test="availableAmount != null">
+                and a.available_amount = #{availableAmount}
+            </if>   
+            <if test="bidRequestId != null">
+                and a.bid_request_id = #{bidRequestId}
+            </if>   
+            <if test="membersId != null">
+                and a.members_id = #{membersId}
+            </if>   
+            <if test="bidTime != null">
+                and a.bid_time = #{bidTime}
+            </if>   
+        </where>
+    </select>
+
+
+    <select id="membersBidQueryPager" parameterType="java.lang.Integer" resultType="java.util.Map">
+        select * from bid a,bid_request b
+        <where>
+            and a.bid_request_id = b.id
+            <if test="membersId != null">
+                and b.members_id = #{membersId}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="queryByRequestId" resultMap="BidMap">
+        select
+          id, actual_rate, available_amount, bid_request_id, members_id, bid_time
+        from bid where bid_request_id = #{bidRequestId}
+    </select>
+
+
+    <select id="membersAvailableAmountSum" resultType="java.lang.Integer">
+        select ifnull(sum(available_amount), 0) from bid where members_id = #{membersId}
+    </select>
+
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into bid(actual_rate, available_amount, bid_request_id, members_id, bid_time)
+        values (#{actualRate}, #{availableAmount}, #{bidRequestId}, #{membersId}, #{bidTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update bid
+        <set>
+            <if test="actualRate != null">
+                actual_rate = #{actualRate},
+            </if>
+            <if test="availableAmount != null">
+                available_amount = #{availableAmount},
+            </if>
+            <if test="bidRequestId != null">
+                bid_request_id = #{bidRequestId},
+            </if>
+            <if test="membersId != null">
+                members_id = #{membersId},
+            </if>
+            <if test="bidTime != null">
+                bid_time = #{bidTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from bid where id = #{id}
+    </delete>
+
+
+</mapper>

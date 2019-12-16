@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/1001" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config_server_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_assets_1003" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_assets_1003_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_business_1002_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_material_1005_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_other_1007_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_shiro_1006_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_sys_1004" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_sys_1004_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pervider_user_1001_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/perviser_business_1002_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/provider_assets_1003_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/provider_business_1002" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/provider_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/turbine_91_p2p" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zuul_3001_p2p" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="pervider_business_1002_p2p" />
+        <module name="config_server_p2p" />
+        <module name="turbine_91_p2p" />
+        <module name="common_p2p" />
+        <module name="pervider_other_1007_p2p" />
+        <module name="pervider_assets_1003_p2p" />
+        <module name="zuul_3001_p2p" />
+        <module name="pervider_user_1001_p2p" />
+        <module name="eureka_server_p2p" />
+        <module name="pervider_shiro_1006_p2p" />
+        <module name="pervider_sys_1004_p2p" />
+        <module name="pervider_material_1005_p2p" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="1001" target="1.8" />
+      <module name="common_p2p" target="1.8" />
+      <module name="config_server_p2p" target="1.8" />
+      <module name="eureka_server_p2p" target="1.8" />
+      <module name="eutrka_server_p2p" target="1.8" />
+      <module name="pervider_assets_1003" target="1.8" />
+      <module name="pervider_assets_1003_p2p" target="1.8" />
+      <module name="pervider_business_1002_p2p" target="1.8" />
+      <module name="pervider_material_1005_p2p" target="1.8" />
+      <module name="pervider_other_1007_p2p" target="1.8" />
+      <module name="pervider_shiro_1006_p2p" target="1.8" />
+      <module name="pervider_sys_1004" target="1.8" />
+      <module name="pervider_sys_1004_p2p" target="1.8" />
+      <module name="pervider_user_1001_p2p" target="1.8" />
+      <module name="perviser_business_1002_p2p" target="1.8" />
+      <module name="provider_assets_1003_p2p" target="1.8" />
+      <module name="provider_business_1002" target="1.8" />
+      <module name="provider_p2p" target="1.8" />
+      <module name="springcloud_P2P" target="1.8" />
+      <module name="turbine_91_p2p" target="1.8" />
+      <module name="zuul_3001_p2p" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="1001" options="-parameters" />
+      <module name="common_p2p" options="" />
+      <module name="config_server_p2p" options="" />
+      <module name="eureka_server_p2p" options="" />
+      <module name="eutrka_server_p2p" options="-parameters" />
+      <module name="pervider_assets_1003" options="-parameters" />
+      <module name="pervider_assets_1003_p2p" options="-parameters" />
+      <module name="pervider_business_1002_p2p" options="" />
+      <module name="pervider_material_1005_p2p" options="-parameters" />
+      <module name="pervider_other_1007_p2p" options="-parameters" />
+      <module name="pervider_shiro_1006_p2p" options="-parameters" />
+      <module name="pervider_sys_1004" options="-parameters" />
+      <module name="pervider_sys_1004_p2p" options="-parameters" />
+      <module name="pervider_user_1001_p2p" options="-parameters" />
+      <module name="perviser_business_1002_p2p" options="-parameters" />
+      <module name="provider_assets_1003_p2p" options="-parameters" />
+      <module name="provider_business_1002" options="-parameters" />
+      <module name="provider_p2p" options="-parameters" />
+      <module name="turbine_91_p2p" options="-parameters" />
+      <module name="zuul_3001_p2p" options="" />
+    </option>
+  </component>
+</project>
