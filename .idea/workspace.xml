@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="121d5ac3-4ab8-4e9b-bccd-b6172a23c921" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_config_1_4_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/controller/BidController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/controller/BidRequestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/controller/RefundDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/controller/ReturnDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/dao/BidDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/dao/BidRequestDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/dao/RefundDetailDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/dao/ReturnDetailDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/BidRequestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/BidService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/RefundDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/ReturnDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/impl/BidRequestServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/impl/BidServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/impl/RefundDetailServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/impl/ReturnDetailServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/resources/mapper/BidDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/resources/mapper/BidRequestDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/resources/mapper/RefundDetailDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pervider_business_1002_p2p/src/main/resources/mapper/ReturnDetailDao.xml" afterDir="false" />
-    </list>
+    <list default="true" id="121d5ac3-4ab8-4e9b-bccd-b6172a23c921" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/common_p2p/target/" />
@@ -129,7 +105,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pervider_business_1002_p2p/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
@@ -138,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pervider_business_1002_p2p/src/main/resources/mapper/BidRequestDao.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="42" column="47" lean-forward="true" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+            <state relative-caret-position="125">
+              <caret line="5" column="53" lean-forward="true" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -588,12 +564,20 @@
       <workItem from="1576119932679" duration="5540000" />
       <workItem from="1576134085421" duration="13546000" />
       <workItem from="1576205872458" duration="18920000" />
-      <workItem from="1576475860593" duration="10622000" />
+      <workItem from="1576475860593" duration="11104000" />
     </task>
+    <task id="LOCAL-00001" summary="第二次提交，主要是提交了业务模块">
+      <created>1576487183400</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1576487183400</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54175000" />
+    <option name="totallyTimeSpent" value="54657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -607,7 +591,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30563003" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30563003" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -634,7 +618,7 @@
       <window_info anchor="bottom" id="JRebel Console" order="14" sideWeight="0.5013405" side_tool="true" weight="0.6301939" />
       <window_info anchor="bottom" id="JRebel Executor" order="15" />
       <window_info anchor="bottom" id="Messages" order="16" weight="0.32825485" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="17" sideWeight="0.6575067" visible="true" weight="0.38919666" />
+      <window_info anchor="bottom" id="Run Dashboard" order="17" sideWeight="0.6575067" visible="true" weight="0.38919666" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -690,6 +674,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="第二次提交，主要是提交了业务模块" />
+    <option name="LAST_COMMIT_MESSAGE" value="第二次提交，主要是提交了业务模块" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/zuul_3001_p2p/src/main/java/com/wyy/zuul_3001_p2p/config/ZuulConfig.java">
@@ -1016,13 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pervider_business_1002_p2p/src/main/resources/mapper/BidRequestDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="42" column="47" lean-forward="true" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pervider_business_1002_p2p/src/main/java/com/wyy/pervider_business_1002_p2p/service/BidRequestService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1172">
@@ -1100,6 +1081,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pervider_business_1002_p2p/src/main/resources/mapper/BidRequestDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="53" lean-forward="true" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
         </state>
       </provider>
     </entry>
