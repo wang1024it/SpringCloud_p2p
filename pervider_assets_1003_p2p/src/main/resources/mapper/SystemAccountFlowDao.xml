@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_assets_1003_p2p.dao.SystemAccountFlowDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.assets.SystemAccountFlow" id="SystemAccountFlowMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="otype" column="otype" jdbcType="INTEGER"/>
+        <result property="amount" column="amount" jdbcType="OTHER"/>
+        <result property="otime" column="otime" jdbcType="TIMESTAMP"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SystemAccountFlowMap">
+        select
+          id, otype, amount, otime, description
+        from system_account_flow
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="SystemAccountFlowMap">
+        select
+          id, otype, amount, otime, description
+        from system_account_flow
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>   
+            <if test="otype != null">
+                and otype = #{otype}
+            </if>   
+            <if test="amount != null">
+                and amount = #{amount}
+            </if>   
+            <if test="otime != null">
+                and otime = #{otime}
+            </if>   
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into system_account_flow(otype, amount, otime, description)
+        values (#{otype}, #{amount}, #{otime}, #{description})
+        <if test="otype != null and otype == 2">
+<!--            给平台账户加钱-->
+            update systemaccount set usable_amount = usable_amount + #{amount}
+        </if>
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update system_account_flow
+        <set>
+            <if test="otype != null">
+                otype = #{otype},
+            </if>
+            <if test="amount != null">
+                amount = #{amount},
+            </if>
+            <if test="otime != null">
+                otime = #{otime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from system_account_flow where id = #{id}
+    </delete>
+    
+</mapper>

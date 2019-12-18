@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_user_1001_p2p.dao.MembersDetailDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.members.MembersDetail" id="MembersDetailMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="membersId" column="members_id" jdbcType="INTEGER"/>
+        <result property="headPhoto" column="head_photo" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="myselfBackground" column="myself_background" jdbcType="VARCHAR"/>
+        <result property="monthlyIncome" column="monthly_income" jdbcType="TIMESTAMP"/>
+        <result property="maritalStatus" column="marital_status" jdbcType="VARCHAR"/>
+        <result property="children" column="children" jdbcType="VARCHAR"/>
+        <result property="house" column="house" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MembersDetailMap">
+        select
+          id, members_id, head_photo, phone, sex, myself_background, monthly_income, marital_status, children, house
+        from members_detail
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="MembersDetailMap">
+        select
+          id, members_id, head_photo, phone, sex, myself_background, monthly_income, marital_status, children, house
+        from members_detail
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>   
+            <if test="membersId != null">
+                and members_id = #{membersId}
+            </if>   
+            <if test="headPhoto != null and headPhoto != ''">
+                and head_photo like concat('%', #{headPhoto}, '%')
+            </if>            
+            <if test="phone != null and phone != ''">
+                and phone like concat('%', #{phone}, '%')
+            </if>            
+            <if test="sex != null and sex != ''">
+                and sex like concat('%', #{sex}, '%')
+            </if>            
+            <if test="myselfBackground != null and myselfBackground != ''">
+                and myself_background like concat('%', #{myselfBackground}, '%')
+            </if>            
+            <if test="monthlyIncome != null">
+                and monthly_income = #{monthlyIncome}
+            </if>   
+            <if test="maritalStatus != null and maritalStatus != ''">
+                and marital_status like concat('%', #{maritalStatus}, '%')
+            </if>            
+            <if test="children != null and children != ''">
+                and children like concat('%', #{children}, '%')
+            </if>            
+            <if test="house != null and house != ''">
+                and house like concat('%', #{house}, '%')
+            </if>            
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into members_detail(members_id, head_photo, phone, sex, myself_background, monthly_income, marital_status, children, house)
+        values (#{membersId}, #{headPhoto}, #{phone}, #{sex}, #{myselfBackground}, #{monthlyIncome}, #{maritalStatus}, #{children}, #{house})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update members_detail
+        <set>
+            <if test="membersId != null">
+                members_id = #{membersId},
+            </if>
+            <if test="headPhoto != null and headPhoto != ''">
+                head_photo = #{headPhoto},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex},
+            </if>
+            <if test="myselfBackground != null and myselfBackground != ''">
+                myself_background = #{myselfBackground},
+            </if>
+            <if test="monthlyIncome != null">
+                monthly_income = #{monthlyIncome},
+            </if>
+            <if test="maritalStatus != null and maritalStatus != ''">
+                marital_status = #{maritalStatus},
+            </if>
+            <if test="children != null and children != ''">
+                children = #{children},
+            </if>
+            <if test="house != null and house != ''">
+                house = #{house},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from members_detail where id = #{id}
+    </delete>
+    
+</mapper>

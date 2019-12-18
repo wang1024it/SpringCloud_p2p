@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //启用事物管理器
 @EnableTransactionManagement
 //这是 feign 调用的扫描
-@EnableFeignClients(basePackages = {"com.wyy"})
+@EnableFeignClients(basePackages = {"com.wyy.*.*"})
 @EnableEurekaClient
 @SpringBootApplication(scanBasePackages="com.wyy")
 public class PerviderBusiness1002P2pApplication {

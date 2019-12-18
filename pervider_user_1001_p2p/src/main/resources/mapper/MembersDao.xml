@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_user_1001_p2p.dao.MembersDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.members.Members" id="MembersMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="certificationScore" column="certification_score" jdbcType="INTEGER"/>
+        <result property="isIdentityAuthentication" column="is_identity_authentication" jdbcType="INTEGER"/>
+        <result property="membersState" column="members_state" jdbcType="INTEGER"/>
+        <result property="rate" column="rate" jdbcType="OTHER"/>
+        <result property="rateTime" column="rate_time" jdbcType="OTHER"/>
+        <result property="bidRequestId" column="bid_request_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MembersMap">
+        select
+          id, name, password, certification_score, is_identity_authentication, members_state, rate, rate_time, bid_request_id
+        from members
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="MembersMap">
+        select
+          id, name, password, certification_score, is_identity_authentication, members_state, rate, rate_time, bid_request_id
+        from members
+        <where>
+                <if test="id != null">
+                and id = #{id}
+            </if>   
+                <if test="name != null and name != ''">
+                and name like concat('%', #{name}, '%')
+            </if>            
+                <if test="password != null and password != ''">
+                and password like concat('%', #{password}, '%')
+            </if>            
+                <if test="certificationScore != null">
+                and certification_score = #{certificationScore}
+            </if>   
+                <if test="isIdentityAuthentication != null">
+                and is_identity_authentication = #{isIdentityAuthentication}
+            </if>   
+                <if test="membersState != null">
+                and members_state = #{membersState}
+            </if>   
+                <if test="rate != null">
+                and rate = #{rate}
+            </if>   
+                <if test="rateTime != null">
+                and rate_time = #{rateTime}
+            </if>   
+                <if test="bidRequestId != null">
+                and bid_request_id = #{bidRequestId}
+            </if>   
+        </where>
+    </select>
+
+    <select id="login" resultMap="MembersMap">
+        select * from members  where name = #{name} and `password` =  #{password}
+    </select>
+
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into members (name, password) values(#{name}, #{password});
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update members
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="certificationScore != null">
+                certification_score = #{certificationScore},
+            </if>
+            <if test="isIdentityAuthentication != null">
+                is_identity_authentication = #{isIdentityAuthentication},
+            </if>
+            <if test="membersState != null">
+                members_state = #{membersState},
+            </if>
+            <if test="rate != null">
+                rate = #{rate},
+            </if>
+            <if test="rateTime != null">
+                rate_time = #{rateTime},
+            </if>
+            <if test="bidRequestId != null">
+                bid_request_id = #{bidRequestId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from members where id = #{id}
+    </delete>
+
+    <!--这是获取最大id-->
+    <select id="getMaxId" resultType="java.lang.Integer">
+        select max(id) from members
+    </select>
+
+    <insert id="initMembersDetail" parameterType="java.lang.Integer">
+        insert into members_detail (members_id) values(#{membersId});
+    </insert>
+
+    <insert id="initMembersAccount" parameterType="java.lang.Integer">
+        insert into members_account(members_id) values(#{membersId});
+    </insert>
+</mapper>

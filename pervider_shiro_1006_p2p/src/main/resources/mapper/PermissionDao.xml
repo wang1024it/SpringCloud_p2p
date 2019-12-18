@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_shiro_1006_p2p.dao.PermissionDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.sys.Permission" id="PermissionMap">
+        <result property="perId" column="per_id" jdbcType="INTEGER"/>
+        <result property="perName" column="per_name" jdbcType="VARCHAR"/>
+        <result property="pid" column="pid" jdbcType="INTEGER"/>
+        <result property="permission" column="permission" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="mark" column="mark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <resultMap type="com.wyy.common_p2p.entity.sys.Menu" id="MenuMap">
+        <result property="id" column="per_id" jdbcType="INTEGER"/>
+        <result property="text" column="per_name" jdbcType="VARCHAR"/>
+        <result property="pid" column="pid" jdbcType="INTEGER"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="mark" column="mark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="PermissionMap">
+        select
+          per_id, per_name, pid, permission, icon, url, sort, type, mark
+        from permission
+        where per_id = #{perId}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="PermissionMap">
+        select
+          per_id, per_name, pid, permission, icon, url, sort, type, mark
+        from permission
+        <where>
+            <if test="perId != null">
+                and per_id = #{perId}
+            </if>
+            <if test="perName != null and perName != ''">
+                and per_name = #{perName}
+            </if>
+            <if test="pid != null">
+                and pid = #{pid}
+            </if>
+            <if test="permission != null and permission != ''">
+                and permission = #{permission}
+            </if>
+            <if test="icon != null and icon != ''">
+                and icon = #{icon}
+            </if>
+            <if test="url != null and url != ''">
+                and url = #{url}
+            </if>
+            <if test="sort != null">
+                and sort = #{sort}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="mark != null and mark != ''">
+                and mark = #{mark}
+            </if>
+        </where>
+    </select>
+<!--    查询用户的权限菜单（父菜单下的子菜单）-->
+    <select id="queryChildern" resultMap="MenuMap">
+        select * from permission where per_id in (
+            select per_id from role_permission where role_id in (
+                select role_id from user_role where user_id = #{userId}
+            )
+        ) and pid = #{pid} and type in (1,2) ORDER BY sort
+    </select>
+
+    <select id="queryModules" resultMap="MenuMap">
+            select * from permission where pid = #{pid}
+    </select>
+
+<!--    这是查找出角色对应的权限id-->
+    <select id="queryIdByRole" resultType="java.lang.Integer">
+             select per_id from role_permission where role_id = #{roleId}
+    </select>
+
+
+
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="perId" useGeneratedKeys="true">
+        insert into permission(per_name, pid, permission, icon, url, sort, type, mark)
+        values (#{perName}, #{pid}, #{permission}, #{icon}, #{url}, #{sort}, #{type}, #{mark})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update permission
+        <set>
+            <if test="perName != null and perName != ''">
+                per_name = #{perName},
+            </if>
+            <if test="pid != null">
+                pid = #{pid},
+            </if>
+            <if test="permission != null and permission != ''">
+                permission = #{permission},
+            </if>
+            <if test="icon != null and icon != ''">
+                icon = #{icon},
+            </if>
+            <if test="url != null and url != ''">
+                url = #{url},
+            </if>
+            <if test="sort != null">
+                sort = #{sort},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="mark != null and mark != ''">
+                mark = #{mark},
+            </if>
+        </set>
+        where per_id = #{perId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from permission where per_id = #{perId}
+    </delete>
+    
+</mapper>

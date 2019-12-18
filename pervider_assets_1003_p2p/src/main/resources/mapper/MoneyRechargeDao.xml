@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_assets_1003_p2p.dao.MoneyRechargeDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.assets.MoneyRecharge" id="MoneyRechargeMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tradeCode" column="trade_code" jdbcType="VARCHAR"/>
+        <result property="tradeTime" column="trade_time" jdbcType="TIMESTAMP"/>
+        <result property="amount" column="amount" jdbcType="OTHER"/>
+        <result property="membersId" column="members_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MoneyRechargeMap">
+        select
+          id, trade_code, trade_time, amount, members_id
+        from money_recharge
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="MoneyRechargeMap" resultType="java.util.Map">
+        select
+          a.id, a.trade_code, a.trade_time, a.amount, a.members_id,b.name
+        from money_recharge a,members b
+        <where>
+            <if test="id != null">
+                and a.id like concat('%', #{id}, '%')
+            </if>
+            <if test="tradeCode != null and tradeCode != ''">
+                and a.trade_code = #{tradeCode}
+            </if>
+            <if test="tradeTimeStart != null">
+                and unix_timestamp(a.trade_time) &gt; unix_timestamp(#{tradeTimeStart})
+            </if>
+            <if test="tradeTimeEnd != null">
+                and unix_timestamp(a.trade_time) &lt; unix_timestamp(#{tradeTimeEnd})
+            </if>
+            <if test="amount != null">
+                and a.amount = #{amount}
+            </if>
+                <if test="membersId != null">
+                and a.members_id = #{membersId}
+            </if>
+                <if test="name != null and name != ''">
+                and b.name like concat('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into money_recharge(trade_code, trade_time, amount, members_id)
+        values (null, #{tradeTime}, #{amount}, #{membersId})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update money_recharge
+        <set>
+            <if test="tradeCode != null and tradeCode != ''">
+                trade_code = #{tradeCode},
+            </if>
+            <if test="tradeTime != null">
+                trade_time = #{tradeTime},
+            </if>
+            <if test="amount != null">
+                amount = #{amount},
+            </if>
+            <if test="membersId != null">
+                members_id = #{membersId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from money_recharge where id = #{id}
+    </delete>
+
+
+
+    <update id="updateAmount">
+        update members_account,
+        <set>
+            <if test="membersId != null">
+                members_id = #{membersId},
+            </if>
+            <if test="tradePassword != null and tradePassword != ''">
+                trade_password = #{tradePassword},
+            </if>
+            <if test="usableAmount != null and usableAmount != ''">
+                usable_amount = #{usableAmount},
+            </if>
+            <if test="unReceiveInterest != null">
+                un_receive_interest = #{unReceiveInterest},
+            </if>
+            <if test="unReceivePrincipal != null">
+                un_receive_principal = #{unReceivePrincipal},
+            </if>
+            <if test="borrowLimit != null">
+                borrow_limit = #{borrowLimit},
+            </if>
+            <if test="tradeCode != null and tradeCode != ''">
+                trade_code = #{tradeCode},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+
+
+</mapper>

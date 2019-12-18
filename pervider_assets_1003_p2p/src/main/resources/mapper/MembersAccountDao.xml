@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_assets_1003_p2p.dao.MembersAccountDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.assets.MembersAccount" id="MembersAccountMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="membersId" column="members_id" jdbcType="INTEGER"/>
+        <result property="tradePassword" column="trade_password" jdbcType="VARCHAR"/>
+        <result property="usableAmount" column="usable_amount" jdbcType="OTHER"/>
+        <result property="unReceiveInterest" column="un_receive_interest" jdbcType="OTHER"/>
+        <result property="unReceivePrincipal" column="un_receive_principal" jdbcType="OTHER"/>
+        <result property="borrowLimit" column="borrow_limit" jdbcType="OTHER"/>
+        <result property="tradeCode" column="trade_code" jdbcType="VARCHAR"/>
+        <result property="membersName" column="members_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MembersAccountMap">
+        select
+          id, members_id, trade_password, usable_amount, un_receive_interest, un_receive_principal, borrow_limit, trade_code
+        from members_account
+        where id = #{id}
+    </select>
+
+
+
+    <select id="queryByMembersId" resultMap="MembersAccountMap">
+        select
+          id, members_id, trade_password, usable_amount, un_receive_interest, un_receive_principal, borrow_limit, trade_code
+        from members_account
+        where members_id = #{membersId}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="MembersAccountMap">
+        select a.*, b.`name` as members_name from members_account a, members  b
+        <where>
+            and a.members_id = b.id
+            <if test="id != null">
+                and id = #{id}
+            </if>   
+            <if test="membersId != null">
+                and members_id = #{membersId}
+            </if>   
+            <if test="tradePassword != null and tradePassword != ''">
+                and trade_password like concat('%', #{tradePassword}, '%')
+            </if>            
+            <if test="usableAmount != null and usableAmount != ''">
+                and usable_amount like concat('%', #{usableAmount}, '%')
+            </if>            
+            <if test="unReceiveInterest != null">
+                and un_receive_interest = #{unReceiveInterest}
+            </if>   
+            <if test="unReceivePrincipal != null">
+                and un_receive_principal = #{unReceivePrincipal}
+            </if>   
+            <if test="borrowLimit != null">
+                and borrow_limit = #{borrowLimit}
+            </if>   
+            <if test="tradeCode != null and tradeCode != ''">
+                and trade_code like concat('%', #{tradeCode}, '%')
+            </if>            
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into members_account(members_id, trade_password, usable_amount, un_receive_interest, un_receive_principal, borrow_limit, trade_code)
+        values (#{membersId}, #{tradePassword}, #{usableAmount}, #{unReceiveInterest}, #{unReceivePrincipal}, #{borrowLimit}, #{tradeCode})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update members_account
+        <set>
+            <if test="membersId != null">
+                members_id = #{membersId},
+            </if>
+            <if test="tradePassword != null and tradePassword != ''">
+                trade_password = #{tradePassword},
+            </if>
+            <if test="usableAmount != null and usableAmount != ''">
+                usable_amount = #{usableAmount},
+            </if>
+            <if test="unReceiveInterest != null">
+                un_receive_interest = #{unReceiveInterest},
+            </if>
+            <if test="unReceivePrincipal != null">
+                un_receive_principal = #{unReceivePrincipal},
+            </if>
+            <if test="borrowLimit != null">
+                borrow_limit = #{borrowLimit},
+            </if>
+            <if test="tradeCode != null and tradeCode != ''">
+                trade_code = #{tradeCode},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from members_account where id = #{id}
+    </delete>
+    
+</mapper>

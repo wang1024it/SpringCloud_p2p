@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_sys_1004_p2p.dao.SettingDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.setting.Setting" id="SettingMap">
+        <result property="key" column="key" jdbcType="VARCHAR"/>
+        <result property="value" column="value" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--<cache type="com.wyy.common_p2p.utils.RedisCache.java"
+           eviction="LRU"
+           flushInterval="6000000"
+           size="1024"
+           readOnly="false"></cache>-->
+
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SettingMap">
+        select
+          `key`, `value`
+        from setting
+        where `key` = #{key}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="SettingMap">
+        select
+        `key`, `value`
+        from setting
+        <where>
+                <if test="key != null and key != ''">
+                and `key` like concat('%', #{key}, '%')
+            </if>            
+                <if test="value != null and value != ''">
+                and `value` like concat('%', #{value}, '%')
+            </if>            
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="key" useGeneratedKeys="true">
+        insert into setting(value)
+        'values' (#{value})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update setting
+        <set>
+            <if test="value != null and value != ''">
+                `value` = #{value},
+            </if>
+        </set>
+        where `key` = #{key}
+    </update>
+
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from setting where key = #{key}
+    </delete>
+
+
+
+</mapper>

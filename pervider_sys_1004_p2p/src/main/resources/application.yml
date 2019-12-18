@@ -1,0 +1,108 @@
+server:
+  port: 1004
+  context-path: /
+
+
+eureka:
+  instance:
+    hostname: localhost
+    appname: sys
+    instance-id: sys:1004
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka2001.wyy.com:2001/eureka/,http://eureka2002.wyy.com:2002/eureka/,http://eureka2003.wyy.com:2003/eureka/,
+
+
+info:
+  groupId: com.wyy.pervider_sys_1004
+  artifactId: pervider_sys_1004_p2p
+  version: 1.0-SNAPSHOT
+  userName: http://mgdd.com
+  phone: 123456
+
+
+spring:
+  application:
+    name: shiro
+
+  redis:
+    database: 0
+    host: 192.168.146.138
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 3
+        max-wait: -1
+        min-idle: 0
+    timeout: 1000
+
+  datasource:
+
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud_p2p?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123
+    druid:
+
+
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+
+      max-wait: 60000
+
+      time-between-eviction-runs-millis: 60000
+
+      min-evictable-idle-time-millis: 30000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+
+      filter:
+        stat:
+          merge-sql: true
+          slow-sql-millis: 5000
+
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        session-stat-enable: true
+        session-stat-max-count: 100
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+
+        login-username: admin
+        login-password: admin
+        allow: 127.0.0.1
+
+
+
+mybatis:
+
+  mapper-locations: classpath:mapper/*Dao.xml
+  configuration:
+
+    cache-enabled: true
+    aggressive-lazy-loading: true
+    lazy-loading-enabled: false
+
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+debug: true

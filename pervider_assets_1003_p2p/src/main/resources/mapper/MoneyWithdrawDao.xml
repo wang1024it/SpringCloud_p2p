@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_assets_1003_p2p.dao.MoneyWithdrawDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.assets.MoneyWithdraw" id="MoneyWithdrawMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="auditTime" column="audit_time" jdbcType="TIMESTAMP"/>
+        <result property="applyTime" column="apply_time" jdbcType="TIMESTAMP"/>
+        <result property="auditorId" column="auditor_id" jdbcType="INTEGER"/>
+        <result property="membersId" column="members_id" jdbcType="INTEGER"/>
+        <result property="amount" column="amount" jdbcType="OTHER"/>
+        <result property="fee" column="fee" jdbcType="OTHER"/>
+        <result property="tradeCode" column="trade_code" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MoneyWithdrawMap">
+        select
+          id, state, remark, audit_time, apply_time, auditor_id, members_id, amount, fee, trade_code
+        from money_withdraw
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="MoneyWithdrawMap" resultType="java.util.Map">
+        select
+          a.id, a.state, a.remark, a.audit_time, a.apply_time, a.auditor_id, a.members_id, a.amount, a.fee, a.trade_code,b.name
+        from money_withdraw a,members b
+        <where>
+                <if test="id != null">
+                and a.id = #{id}
+            </if>   
+                <if test="state != null">
+                and a.state = #{a.state}
+            </if>   
+                <if test="remark != null and remark != ''">
+                and a.remark like concat('%', #{a.remark}, '%')
+            </if>
+            <if test="applyTimeStart != null">
+                and unix_timestamp(a.apply_time) &gt; unix_timestamp(#{applyTimeStart})
+            </if>
+            <if test="applyTimeEnd != null">
+                and unix_timestamp(a.apply_time) &lt; unix_timestamp(#{applyTimeEnd})
+            </if>
+            <if test="auditorId != null">
+                and a.auditor_id = #{a.auditorId}
+            </if>   
+                <if test="membersId != null">
+                and a.members_id = #{a.membersId}
+            </if>   
+                <if test="amount != null">
+                and a.amount = #{a.amount}
+            </if>   
+                <if test="fee != null">
+                and a.fee = #{a.fee}
+            </if>   
+                <if test="tradeCode != null and tradeCode != ''">
+                and a.trade_code like concat('%', #{a.tradeCode}, '%')
+            </if>
+            <if test="name != null and name != ''">
+                and b.name like concat('%', #{b.name}, '%')
+            </if>
+
+
+    </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into money_withdraw(state, apply_time, members_id, amount,fee)
+        values (2, #{applyTime}, #{membersId}, #{amount}, #{fee})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update money_withdraw
+        <set>
+            <if test="state != null">
+                state = 0,
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="auditTime != null">
+                audit_time = #{auditTime},
+            </if>
+            <if test="applyTime != null">
+                apply_time = #{applyTime},
+            </if>
+            <if test="auditorId != null">
+                auditor_id = #{auditorId},
+            </if>
+            <if test="membersId != null">
+                members_id = #{membersId},
+            </if>
+            <if test="amount != null">
+                amount = #{amount},
+            </if>
+            <if test="fee != null">
+                fee = #{fee},
+            </if>
+            <if test="tradeCode != null and tradeCode != ''">
+                trade_code = #{tradeCode},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from money_withdraw where id = #{id}
+    </delete>
+
+
+
+</mapper>

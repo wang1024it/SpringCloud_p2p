@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyy.pervider_shiro_1006_p2p.dao.UserDao">
+    
+     <!-- 数据库与实体的映射对象 -->
+    <resultMap type="com.wyy.common_p2p.entity.sys.User" id="UserMap">
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="salt" column="salt" jdbcType="VARCHAR"/>
+        <result property="createdate" column="createdate" jdbcType="TIMESTAMP"/>
+        <result property="userFlag" column="user_flag" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserMap">
+        select
+          user_id, user_name, password, salt, createdate, user_flag
+        from user
+        where user_id = #{userId}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryPager" resultMap="UserMap">
+        select
+          user_id, user_name, createdate, user_flag
+        from user
+        <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="salt != null and salt != ''">
+                and salt = #{salt}
+            </if>
+            <if test="createdate != null">
+                and createdate = #{createdate}
+            </if>
+            <if test="userFlag != null">
+                and user_flag = #{userFlag}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getRolesByUserId" resultType="java.lang.String">
+        select r.role_id from user u,user_role ur,role r
+      where u.user_id = ur.user_id and ur.role_id = r.role_id
+      and u.user_id = #{userId}
+    </select>
+
+    <select id="getPersByUserId" resultType="java.lang.String">
+           select p.permission from user u, user_role ur,role_permission rp,permission p
+           where u.user_id = ur.user_id and ur.role_id = rp.role_id and rp.per_id = p.per_id
+           and u.user_id = #{userId}
+    </select>
+
+    <select id="queryByName" resultMap="UserMap">
+        select
+          user_id, user_name, password, salt, createdate, user_flag
+        from user
+        where user_name = #{userName}
+    </select>
+    <select id="getMaxId" resultType="java.lang.Integer">
+        select max(user_id) from user
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="userId" useGeneratedKeys="true">
+        insert into user(user_name, password, salt, createdate, user_flag)
+        values (#{userName}, #{password}, #{salt}, #{createdate}, #{userFlag})
+    </insert>
+
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update user
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="salt != null and salt != ''">
+                salt = #{salt},
+            </if>
+            <if test="createdate != null">
+                createdate = #{createdate},
+            </if>
+            <if test="userFlag != null">
+                user_flag = #{userFlag},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+
+    <!--修改用户密码-->
+    <update id="updatePwd">
+        update user set password = #{password}, salt = #{salt} where user_id = #{userId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from user where user_id = #{userId}
+    </delete>
+    <delete id="delUserRoleByUserId">
+        delete from user_role where user_id = #{userId}
+    </delete>
+
+</mapper>

@@ -7,17 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pervider_business_1002_p2p" />
-        <module name="config_server_p2p" />
         <module name="turbine_91_p2p" />
         <module name="common_p2p" />
-        <module name="pervider_other_1007_p2p" />
         <module name="pervider_assets_1003_p2p" />
-        <module name="zuul_3001_p2p" />
+        <module name="pervider_other_1007_p2p" />
         <module name="pervider_user_1001_p2p" />
-        <module name="eureka_server_p2p" />
+        <module name="pervider_material_1005_p2p" />
+        <module name="zuul_3001_p2p" />
         <module name="pervider_shiro_1006_p2p" />
         <module name="pervider_sys_1004_p2p" />
-        <module name="pervider_material_1005_p2p" />
+        <module name="config_server_p2p" />
+        <module name="eureka_server_p2p" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -52,14 +52,14 @@
       <module name="eureka_server_p2p" options="" />
       <module name="eutrka_server_p2p" options="-parameters" />
       <module name="pervider_assets_1003" options="-parameters" />
-      <module name="pervider_assets_1003_p2p" options="-parameters" />
+      <module name="pervider_assets_1003_p2p" options="" />
       <module name="pervider_business_1002_p2p" options="" />
       <module name="pervider_material_1005_p2p" options="-parameters" />
       <module name="pervider_other_1007_p2p" options="-parameters" />
-      <module name="pervider_shiro_1006_p2p" options="-parameters" />
+      <module name="pervider_shiro_1006_p2p" options="" />
       <module name="pervider_sys_1004" options="-parameters" />
-      <module name="pervider_sys_1004_p2p" options="-parameters" />
-      <module name="pervider_user_1001_p2p" options="-parameters" />
+      <module name="pervider_sys_1004_p2p" options="" />
+      <module name="pervider_user_1001_p2p" options="" />
       <module name="perviser_business_1002_p2p" options="-parameters" />
       <module name="provider_assets_1003_p2p" options="-parameters" />
       <module name="provider_business_1002" options="-parameters" />
